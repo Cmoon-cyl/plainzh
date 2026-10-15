@@ -40,19 +40,17 @@ PlainZH 是一套中文写作 Skill，适合日常与 Agent 协作时的回复�
 </details>
 
 <details>
-<summary><strong>项目周报：保留汇报语气，让具体进展更好找</strong></summary>
-
-以下节选周报中的“文档进展”小节。
+<summary><strong>技术方案：把密集规则拆成可查找的条件</strong></summary>
 
 <table>
 <tr><th width="50%">改写前</th><th width="50%">PlainZH 改写</th></tr>
 <tr>
-<td valign="top"><p><strong>内容建设：以系统化梳理夯实自助服务基础</strong></p><p>本周，团队围绕帮助中心改版目标，持续推进内容建设与质量打磨，推动操作指南从内容更新向服务体验支撑进一步延伸。在这一过程中，我们坚持内容完善与质量把关并重，确保文档更新工作有序开展。具体来看，纳入本轮更新范围的 12 篇操作指南中，9 篇已完成修改并通过内容审核；其余 3 篇受新版页面截图尚未提供的影响，暂时无法完成。考虑到整体内容的一致性，已审核的 9 篇目前尚未发布，后续将与剩余内容统一上线，为用户提供更加完整的查阅支持。</p></td>
-<td valign="top"><p><strong>文档进展：9 篇已审核，3 篇等截图</strong></p><p>计划更新的 12 篇操作指南中，9 篇已完成修改和内容审核，尚未发布；另外 3 篇还缺新版页面截图，暂时无法完成。我们计划等全部完成后一起上线。</p></td>
+<td valign="top"><p>状态库记录写前意图、请求hash、远端引用、事件游标、attempt、锁/租约及outbox。相同operation_key只代表同一请求；同key不同hash冲突。submit结果unknown时先reconcile原写入；后端不能核对则停留unknown，不能为了继续验收重提。等待超时只停止本地等待，不默认取消远端任务。取消按资源所有权和精确运行引用进行，不能取消同Session其他调用。</p></td>
+<td valign="top"><p><strong>保存恢复所需的信息</strong></p><p>状态库需要记录准备执行的写入、请求 hash、远端引用和事件游标，还要保存 attempt、锁或租约，以及 outbox。这些信息用于判断上次执行到了哪里，以及请求是否可以继续处理。</p><p><strong>分清重试、超时和取消</strong></p><ul><li><strong>请求去重</strong>：同一个 <code>operation_key</code> 对应同一请求。如果 key 相同但 hash 不同，报冲突。</li><li><strong>提交结果未知</strong>：如果 <code>submit</code> 返回 <code>unknown</code>，先用 <code>reconcile</code> 核对原来的写入。后端无法核对时，保留 <code>unknown</code>，不能为了继续验收而重新提交。</li><li><strong>等待超时</strong>：只停止本地等待，默认不取消远端任务。</li><li><strong>取消任务</strong>：根据资源归属和精确的运行引用执行取消，不能影响同一 Session 中的其他调用。</li></ul></td>
 </tr>
 </table>
 
-标题呈现进展，正文分清已审核和已发布，去掉反复强调目标与意义的句子。[阅读完整周报与修改说明](showcase/weekly-update.md)。
+用小标题区分要保存的信息和异常处理规则，再按条件列出处理方式，方便开发者逐项核对。[阅读完整案例与修改说明](showcase/technical-proposal.md)。
 
 </details>
 
