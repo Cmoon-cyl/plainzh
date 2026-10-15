@@ -1,3 +1,3 @@
 interface:
   display_name: "PlainZH · 中文清晰写作"
-  short_description: "依据清晰语言原则组织中文内容，让读者找到所需信息、理解含义并据此行动"
+  short_description: "让 Agent 回复、开发迭代说明、模型答疑和工作汇报更清楚、更自然"
