@@ -8,19 +8,19 @@
 
 ## 原文与改稿
 
-两栏均按样稿原始文本展示；标题标记、列表和表格语法保留为文字，不作为本页的标题或目录。
+按字符对照：左栏高亮删除或替换的文字，右栏高亮新增或替换的文字；未改部分不标记。样稿中的 Markdown 标记保留为文字。
 
 <table>
-<tr><th width="50%">原文</th><th width="50%">改稿</th></tr>
+<tr><th width="50%">原文 · 删除处高亮并加删除线</th><th width="50%">改稿 · 新增处高亮并加下划线</th></tr>
 <tr>
 <td valign="top">
-<p>月报数据可以在资料中心找到。每月3日生成上月报告，状态为已发布时可下载；状态为草稿时不能作为正式月报使用。</p>
+<p>月报<mark><del>数据可以在</del></mark>资料中心<mark><del>找到</del></mark>。每月3日生成上月报告<mark><del>，</del></mark>状态<mark><del>为</del></mark>已发布<mark><del>时</del></mark>可下载<mark><del>；状态为</del></mark>草稿<mark><del>时</del></mark>不能作为正式月报使用。</p>
 </td>
 <td valign="top">
-<p>月报位置：工作台 → 资料中心 → 月报。</p>
-<p>每月 3 日生成上月报告。</p>
-<p>下载前先看报告名称右侧的状态标签：</p>
-<p>- 「已发布」：可下载。<br>- 「草稿」：不能作为正式月报使用。</p>
+<p>月报<mark><ins>位置：工作台 → </ins></mark>资料中心<mark><ins> → 月报</ins></mark>。</p>
+<p>每月<mark><ins> </ins></mark>3<mark><ins> </ins></mark>日生成上月报告<mark><ins>。</ins></mark></p>
+<p><mark><ins>下载前先看报告名称右侧的</ins></mark>状态<mark><ins>标签：</ins></mark></p>
+<p><mark><ins>- 「</ins></mark>已发布<mark><ins>」：</ins></mark>可下载<mark><ins>。</ins></mark><br><mark><ins>- 「</ins></mark>草稿<mark><ins>」：</ins></mark>不能作为正式月报使用。</p>
 </td>
 </tr>
 </table>

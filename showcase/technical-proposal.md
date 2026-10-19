@@ -8,19 +8,19 @@
 
 ## 原文与改稿
 
-两栏均按样稿原始文本展示；标题标记、列表和表格语法保留为文字，不作为本页的标题或目录。
+按字符对照：左栏高亮删除或替换的文字，右栏高亮新增或替换的文字；未改部分不标记。样稿中的 Markdown 标记保留为文字。
 
 <table>
-<tr><th width="50%">原文</th><th width="50%">改稿</th></tr>
+<tr><th width="50%">原文 · 删除处高亮并加删除线</th><th width="50%">改稿 · 新增处高亮并加下划线</th></tr>
 <tr>
 <td valign="top">
-<p>状态库记录写前意图、请求hash、远端引用、事件游标、attempt、锁/租约及outbox。相同operation_key只代表同一请求；同key不同hash冲突。submit结果unknown时先reconcile原写入；后端不能核对则停留unknown，不能为了继续验收重提。等待超时只停止本地等待，不默认取消远端任务。取消按资源所有权和精确运行引用进行，不能取消同Session其他调用。</p>
+<p>状态库记录写前意图、请求hash、远端引用、事件游标、attempt、锁/租约及outbox。相同operation_key只代表同一请求；<mark><del>同</del></mark>key<mark><del>不</del></mark>同hash冲突。submit结果unknown<mark><del>时</del></mark>先reconcile原写入<mark><del>；</del></mark>后端<mark><del>不能</del></mark>核对<mark><del>则停留</del></mark>unknown，不能为了继续验收重提。等待超时只停止本地等待，<mark><del>不</del></mark>默认取消远端任务。取消<mark><del>按</del></mark>资源所有权和精确运行引用<mark><del>进</del></mark>行，不能取消同Session其他调用。</p>
 </td>
 <td valign="top">
-<p>### 状态库记录什么</p>
-<p>状态库记录写前意图、请求 hash、远端引用、事件游标、attempt、锁/租约及 outbox。</p>
-<p>### 遇到不同情况怎样处理</p>
-<p>| 情况 | 规则 |<br>|---|---|<br>| 请求使用相同的 `operation_key` | 只代表同一请求；如果 key 相同但 hash 不同，报冲突。 |<br>| `submit` 的结果为 `unknown` | 先用 `reconcile` 核对原写入。后端无法核对时，保持 `unknown`，不能为了继续验收而重新提交。 |<br>| 等待超时 | 只停止本地等待，默认不取消远端任务。 |<br>| 取消任务 | 根据资源所有权和精确的运行引用执行，不能取消同一 Session 中的其他调用。 |</p>
+<p><mark><ins>### 状态库记录什么</ins></mark></p>
+<p>状态库记录写前意图、请求<mark><ins> </ins></mark>hash、远端引用、事件游标、attempt、锁/租约及<mark><ins> </ins></mark>outbox。</p>
+<p><mark><ins>### 遇到不同情况怎样处理</ins></mark></p>
+<p><mark><ins>| 情况 | 规则 |</ins></mark><br><mark><ins>|---|---|</ins></mark><br><mark><ins>| 请求使用</ins></mark>相同<mark><ins>的 `</ins></mark>operation_key<mark><ins>` | </ins></mark>只代表同一请求；<mark><ins>如果 </ins></mark>key<mark><ins> 相</ins></mark>同<mark><ins>但 </ins></mark>hash<mark><ins> 不同，报</ins></mark>冲突。<mark><ins> |</ins></mark><br><mark><ins>| `</ins></mark>submit<mark><ins>` 的</ins></mark>结果<mark><ins>为 `</ins></mark>unknown<mark><ins>` | </ins></mark>先<mark><ins>用 `</ins></mark>reconcile<mark><ins>` 核对</ins></mark>原写入<mark><ins>。</ins></mark>后端<mark><ins>无法</ins></mark>核对<mark><ins>时，保持 `</ins></mark>unknown<mark><ins>`</ins></mark>，不能为了继续验收<mark><ins>而</ins></mark>重<mark><ins>新</ins></mark>提<mark><ins>交</ins></mark>。<mark><ins> |</ins></mark><br><mark><ins>| </ins></mark>等待超时<mark><ins> | </ins></mark>只停止本地等待，默认<mark><ins>不</ins></mark>取消远端任务。<mark><ins> |</ins></mark><br><mark><ins>| </ins></mark>取消<mark><ins>任务 | 根据</ins></mark>资源所有权和精确<mark><ins>的</ins></mark>运行引用<mark><ins>执</ins></mark>行，不能取消同<mark><ins>一 </ins></mark>Session<mark><ins> 中的</ins></mark>其他调用。<mark><ins> |</ins></mark></p>
 </td>
 </tr>
 </table>
