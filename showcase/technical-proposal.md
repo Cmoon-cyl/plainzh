@@ -6,27 +6,24 @@
 
 **材料来源**：沿用本仓库已公开的技术片段；改稿为编辑演示，不是某次测试的原始输出。
 
-## 改写后
+## 原文与改稿
 
-### 状态库记录什么
+两栏均按样稿原始文本展示；标题标记、列表和表格语法保留为文字，不作为本页的标题或目录。
 
-状态库记录写前意图、请求 hash、远端引用、事件游标、attempt、锁/租约及 outbox。
-
-### 遇到不同情况怎样处理
-
-| 情况 | 规则 |
-|---|---|
-| 请求使用相同的 `operation_key` | 只代表同一请求；如果 key 相同但 hash 不同，报冲突。 |
-| `submit` 的结果为 `unknown` | 先用 `reconcile` 核对原写入。后端无法核对时，保持 `unknown`，不能为了继续验收而重新提交。 |
-| 等待超时 | 只停止本地等待，默认不取消远端任务。 |
-| 取消任务 | 根据资源所有权和精确的运行引用执行，不能取消同一 Session 中的其他调用。 |
-
-<details>
-<summary><strong>展开原稿，对照阅读</strong></summary>
-
-状态库记录写前意图、请求hash、远端引用、事件游标、attempt、锁/租约及outbox。相同operation_key只代表同一请求；同key不同hash冲突。submit结果unknown时先reconcile原写入；后端不能核对则停留unknown，不能为了继续验收重提。等待超时只停止本地等待，不默认取消远端任务。取消按资源所有权和精确运行引用进行，不能取消同Session其他调用。
-
-</details>
+<table>
+<tr><th width="50%">原文</th><th width="50%">改稿</th></tr>
+<tr>
+<td valign="top">
+<p>状态库记录写前意图、请求hash、远端引用、事件游标、attempt、锁/租约及outbox。相同operation_key只代表同一请求；同key不同hash冲突。submit结果unknown时先reconcile原写入；后端不能核对则停留unknown，不能为了继续验收重提。等待超时只停止本地等待，不默认取消远端任务。取消按资源所有权和精确运行引用进行，不能取消同Session其他调用。</p>
+</td>
+<td valign="top">
+<p>### 状态库记录什么</p>
+<p>状态库记录写前意图、请求 hash、远端引用、事件游标、attempt、锁/租约及 outbox。</p>
+<p>### 遇到不同情况怎样处理</p>
+<p>| 情况 | 规则 |<br>|---|---|<br>| 请求使用相同的 `operation_key` | 只代表同一请求；如果 key 相同但 hash 不同，报冲突。 |<br>| `submit` 的结果为 `unknown` | 先用 `reconcile` 核对原写入。后端无法核对时，保持 `unknown`，不能为了继续验收而重新提交。 |<br>| 等待超时 | 只停止本地等待，默认不取消远端任务。 |<br>| 取消任务 | 根据资源所有权和精确的运行引用执行，不能取消同一 Session 中的其他调用。 |</p>
+</td>
+</tr>
+</table>
 
 ## 为什么这样改
 
